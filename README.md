@@ -46,7 +46,7 @@ Para jogar o Galactic Defender, você precisa ter um simulador MIPS ou um ambien
 git clone https://github.com/seu-usuario/galactic-defender.git
 
 1. Clone o repositório para a sua máquina local.
-2. Abra o arquivo no seu simulador MIPS preferido.
+2. Abra o arquivo *GalacticDefender.s* no seu simulador MIPS preferido.
 3. Compile e execute o jogo de acordo com as instruções do seu simulador.
 
 ## Contribuições 🤝
