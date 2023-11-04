@@ -14,11 +14,11 @@ SETUP:	la 	a0, background			# carrega o endereco do sprite 'background' em a0
 		call 	PRINT					# imprime o sprite
 		
 		# Random POS spaceship (Multiplo de 4)
-		la 	t0, SPACESHIP_POS
-		call 	RANDOM_POS_X
-		sh	a0, 0(t0)
-		call	RANDOM_POS_Y
-		sh	a0, 2(t0)
+		la 	t0, SPACESHIP_POS			# carrega o endereco da posicao da espaco nave
+		call 	RANDOM_POS_X			# gera um inteiro aleatório para x
+		sh	a0, 0(t0)				# salva o inteiro aleatório em RANDOM_POS_X
+		call	RANDOM_POS_Y			# gera um inteiro aleatório para y
+		sh	a0, 2(t0)				# salva o inteiro aleatório em RANDOM_POS_Y
 	
 		
 GAMELOOP:	
@@ -45,9 +45,9 @@ GAMELOOP:
 		
 SHOOT:	
 		# Solta o tiro
-		la	t1, MUNITION_POS
-		lh	a1, 0(t1)
-		lh	a2, 2(t1)	
+		la	t1, MUNITION_POS			# carrega o endereco da posicao da municao
+		lh	a1, 0(t1)				# carrega em a1 a posicao x da municao
+		lh	a2, 2(t1)				# carrega em a2 a posicao y da municao
 		la 	a0, munition			# carrega o endereço do sprite 'canhao' em a0
 		mv	a3, s0				# frame atual
 		call 	PRINT					# imprime o sprite
@@ -77,7 +77,7 @@ GAMEOVER:
 		li 	a7,	32				# sleep
 		li	a0, 1000				# wait 2000ms
 		ecall
-		j	SETUP				# retorna do loop do jogo
+		j	SETUP					# retorna do loop do jogo
 		
 		# Lê teclado	
 READKEY:
@@ -93,7 +93,7 @@ READKEY:
       	
 WKEYPRESSED:
 		la	t1, CANNON_ANGLE			# carrega o endereco do angulo do canhao em t1
-		li	t2, 3
+		li	t2, 3					# limite de 3
 		lh 	a1, 0(t1)				# carrega o angulo do canhao em a1
 		bge	a1, t2, GAMELOOP			# se for maior ou igual a 3 (maior ângulo possível) retorna pro loop do jogo
 		addi	a1, a1, 1				# soma 1 para variacoes do angulo do canhao
