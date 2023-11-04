@@ -3,12 +3,6 @@ SPACESHIP_POS:	.half 0,0				# x, y
 CANNON_POS:		.half 40,170			# (x, y) Posicao do Canhao
 CANNON_ANGLE:	.half 0				# Angle 0 -> 15 | 1 -> 30 | 2 -> 45 | 3 -> 60
 MUNITION_POS:	.half	88,180			# POS Inicial (X,Y) 15,30,45,60
-#SINCOS_!5:		.float 0.0,0.0			# Valor do Seno e do Cosseno do angulo de 15
-#SINCOS_30:		.float 0.0,0.0			# Valor do Seno e do Cosseno do angulo de 30 
-#SINCOS_45:		.float 0.0,0.0			# Valor do Seno e do Cosseno do angulo de 45
-#SINCOS_60:		.float 0.0,0.0			# Valor do Seno e do Cosseno do angulo de 60
-#SINCOS_75:		.float 0.0,0.0			# Valor do Seno e do Cosseno do angulo de 75
-
 
 .text
 SETUP:	la 	a0, background			# carrega o endereco do sprite 'background' em a0
@@ -160,19 +154,20 @@ ANGLE_135:
 		li	t2, 156				# carrega o valor de y da bala no angulo de 135
 		sh 	t2, 2(t1)				# carrega o valor em MUNITION_POS(2)
 		ret
-#################################################
-#	a0 = endereço imagem				#
-#	a1 = x						#
-#	a2 = y						#
-#	a3 = frame (0 ou 1)				#
-#################################################
-#	t0 = endereco do bitmap display		#
-#	t1 = endereco da imagem				#
-#	t2 = contador de linha				#
-# 	t3 = contador de coluna				#
-#	t4 = largura					#
-#	t5 = altura						#
-#################################################
+		
+		#################################################
+		#	a0 = endereço imagem				#
+		#	a1 = x						#
+		#	a2 = y						#
+		#	a3 = frame (0 ou 1)				#
+		#################################################
+		#	t0 = endereco do bitmap display		#
+		#	t1 = endereco da imagem				#
+		#	t2 = contador de linha				#
+		# 	t3 = contador de coluna				#
+		#	t4 = largura					#
+		#	t5 = altura						#
+		#################################################
 
 PRINT:	li 	t0,0xFF0				# carrega 0xFF0 em t0
 		add 	t0,t0,a3				# adiciona o frame ao FF0 (se o frame for 1 vira FF1, se for 0 fica FF0)
